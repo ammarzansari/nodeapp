@@ -16,7 +16,7 @@ stages {
 
     stage('Deploy to Private EC2') {
         steps {
-            sshagent(['node']) {
+            sshagent(['node.pem']) {
                 sh '''
                 ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
                     mkdir -p /home/ubuntu/app
