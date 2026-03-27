@@ -22,10 +22,13 @@ stages {
                     mkdir -p /home/ubuntu/app
                     exit
                 EOF
+                tar czf app.tar.gz .
 
-                scp -o StrictHostKeyChecking=no -r . $USER@$HOST:/home/ubuntu/app
+                scp -o StrictHostKeyChecking=no app.tar.gz $USER@$HOST:/home/ubuntu/app
 
                 ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
+                    cd /home/ubuntu/app
+                    tar xzf app.tar.gz -C /home/ubuntu/app
                     cd /home/ubuntu/app
                     npm install
                     pm2 delete node-app || true
