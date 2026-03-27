@@ -8,12 +8,6 @@ environment {
 
 stages {
 
-    stage('Clone Repo') {
-        steps {
-            git 'https://github.com/ammarzansari/nodeapp.git'
-        }
-    }
-
     stage('Install Dependencies') {
         steps {
             sh 'npm install'
