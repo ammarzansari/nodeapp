@@ -23,17 +23,17 @@ stages {
 
     stage('Deploy to Private EC2') {
         steps {
-            sshagent(['ec2-key']) {
+            sshagent(['node']) {
                 sh '''
                 ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
-                    cd /home/ubuntu/app || mkdir -p /home/ubuntu/app
+                    cd /home/newuser || mkdir -p /home/newuser
                     exit
                 EOF
 
                 scp -o StrictHostKeyChecking=no -r * $USER@$HOST:/home/ubuntu/app
 
                 ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
-                    cd /home/ubuntu/app
+                    cd /home/newuser
                     npm install
                     pm2 delete node-app || true
                     pm2 start ecosystem.config.js
