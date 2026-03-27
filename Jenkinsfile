@@ -1,7 +1,6 @@
 pipeline {
 agent any
-
-```
+    
 environment {
     HOST = "10.0.154.49"
     USER = "ubuntu"
@@ -26,14 +25,14 @@ stages {
             sshagent(['node']) {
                 sh '''
                 ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
-                    cd /home/newuser || mkdir -p /home/newuser
+                    mkdir -p /home/ubuntu/app
                     exit
                 EOF
 
                 scp -o StrictHostKeyChecking=no -r * $USER@$HOST:/home/ubuntu/app
 
                 ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
-                    cd /home/newuser
+                    cd /home/ubuntu/app
                     npm install
                     pm2 delete node-app || true
                     pm2 start ecosystem.config.js
@@ -44,6 +43,5 @@ stages {
         }
     }
 }
-```
 
 }
