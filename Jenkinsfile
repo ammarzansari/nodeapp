@@ -23,7 +23,7 @@ stages {
                     exit
                 EOF
 
-                scp -o StrictHostKeyChecking=no -r * $USER@$HOST:/home/ubuntu/app
+                scp -o StrictHostKeyChecking=no -r . $USER@$HOST:/home/ubuntu/app
 
                 ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
                     cd /home/ubuntu/app
