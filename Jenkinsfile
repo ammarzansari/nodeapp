@@ -45,7 +45,7 @@ stages {
 
                     scp -o StrictHostKeyChecking=no app.tar.gz $USER@$HOST:/home/ubuntu/app/
 
-                    ssh -o StrictHostKeyChecking=no $USER@$HOST << EOF
+                    ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
                         export PM2_HOME=/home/ubuntu/.pm2
                         mkdir -p \$PM2_HOME
                         chown -R ubuntu:ubuntu \$PM2_HOME
@@ -69,8 +69,8 @@ stages {
                         pm2 save
 
                         pm2 startup systemd -u ubuntu --hp /home/ubuntu
-                        EOF
-                        '''
+EOF
+                '''
             }
         }
     }
