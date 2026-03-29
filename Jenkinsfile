@@ -23,7 +23,7 @@ stages {
 
                     echo "===== .env loaded successfully ====="
                     # Avoid printing secrets in production
-                    # cat .env
+                    cat .env
                 '''
             }
         }
