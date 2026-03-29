@@ -32,7 +32,7 @@ stages {
     stage('Package App') {
         steps {
             sh '''
-                tar czf app.tar.gz app.js package.json ecosystem.config.js .env
+                tar czf app.tar.gz app.js package.json ecosystem.config.js
             '''
         }
     }
