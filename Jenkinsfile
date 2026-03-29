@@ -77,7 +77,7 @@ stages {
 
     stage('Clean Up Local Tarball') {
         steps {
-            sh 'rm -f app.tar.gz'
+            sh 'rm -rf app.tar.gz'
         }
     }
 }
